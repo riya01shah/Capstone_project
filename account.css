@@ -1,0 +1,234 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0; 
+}
+
+.login-card {
+    
+        /* Add shadows to create the "card" effect */
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        border: 1px solid #cccccc;
+        margin: 100px auto 25px;
+        width: 60%;
+        border-radius: 25px;
+        padding: 15px 0;
+        max-width: 600px;
+      
+}
+.login-wrap {
+    display: flex;
+    justify-content: space-around;
+}
+.login-logo {
+    padding: 35px 0px 25px 15px;
+    width: 40%;
+    align-items: center;
+    display: flex
+;
+}
+.logo-circle {
+    border-radius: 50%;
+}
+
+.login-signup-wrp {
+    text-align: center;
+}
+.login-details-wrap {
+    width: 70%;
+    padding: 0 15px 0 30px;
+}
+.login-details {
+    color: #096A2E;
+    font-size: 32px;
+    padding: 15px 0px;
+}
+.user-details-wrp {
+    width: 90%;
+}
+.user-details {
+    padding: 15px 10px;
+    border: 1px solid #cccccc;
+    border-radius: 50px;
+    margin: 10px 0;
+    width: 100%;
+   
+    
+}
+.forget-btn-wrp {
+    text-align: right;
+}
+.forget-btn {
+    color: #096A2E;
+    padding-right: 25px;
+
+    
+}
+.user-btn-wrp {
+    padding: 15px 0;
+}
+.user-login-btn {
+    background-color: #096A2E;
+    color: #fff;
+    border-radius: 50px;
+    width: 50%;
+    font-size: 20px;
+    font-weight: 700;
+    border: 0;
+    padding: 5px;
+}
+.new-user-wrp {
+    text-align: center;
+}
+.new-user, .create-user-btn  {
+    color: #096A2E ;
+    font-size: 20px;
+    padding: 7px 0px;
+
+}
+.wrapper {
+    margin-bottom: 20px;
+}
+/* Create Account Page */
+.create-card {
+ /* Add shadows to create the "card" effect */
+ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+ border: 1px solid #cccccc;
+ margin: 100px auto 25px;
+ width: 60%;
+ border-radius: 25px;
+ padding: 15px 0;
+ max-width: 600px;
+ flex: 1;
+}
+.name {
+    display: flex;
+}
+.fname, .lname {
+    padding: 15px 10px;
+    border: 1px solid #cccccc;
+    border-radius: 50px;
+    margin: 10px 5px;
+    width: 100%;
+
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 2px;
+    display: block;
+    padding-left: 20px;
+}
+.lnameerror {
+    padding-left: 40px;
+    display: block;
+}
+
+.mobile {
+    display: none !important;
+}
+.desktop {
+    display: block !important;
+}
+/* Forgot_passwrd start */
+.forgot_container {
+    text-align: center;
+    padding-top: 25px;
+}
+.forgot-user-pass-details {
+ width: 50%;
+ padding: 10px 10px;
+}
+.forgotpass-button {
+    margin: 20px 0;
+    padding: 10px;
+}
+.fogot-email-label {
+    margin-right: 15px;
+}
+li {
+    list-style-type: none;
+}
+.red {
+    color: Red;
+
+}
+/* Forgot_passwrd END */
+@media only screen and (max-width: 768px){
+    .login-wrap {
+        display: block;  
+    }
+    .login-logo, .login-details-wrap{
+        text-align: center;
+    }
+    .login-details {
+        font-size: 24px;
+        padding: 0 0 15px;
+    }
+    .login-card, .forgot_container {
+        width: 80%;
+        margin: 50px auto 25px;
+    }
+    .login-logo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 35px 0px 25px 0px;
+    }
+    .logo-circle {
+        width: 150px;
+        height: 150px;
+    }
+    .login-details-wrap {
+        width: 90%;
+        padding: 0;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .new-user, .create-user-btn {
+        color: #096A2E;
+        font-size: 18px;
+        padding: 7px 0px;
+    }
+    .user-login-btn {
+        background-color: #096A2E;
+        color: #fff;
+        border-radius: 50px;
+        width: 100%;
+        font-size: 20px;
+        font-weight: 700;
+        border: 0;
+        padding: 5px 20px;
+    }
+    .forget-btn {
+       
+        padding-right: 0px;
+    }
+
+    .name {
+        display: block;
+    } 
+    .error-message {
+        text-align: left;
+        padding-left: 10px;
+    }
+    .mobile {
+        display: block !important;
+    }
+    .desktop {
+        display: none !important;
+    }
+    .forgot-user-pass-details {
+        width: 80%;
+        padding: 10px 10px;
+       }
+       .forgotpass-button {
+           margin: 20px 0;
+           padding: 10px;
+           width: 80% !important;
+       }
+}

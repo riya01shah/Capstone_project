@@ -1,0 +1,156 @@
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Ensures the page uses full height */
+html, body {
+    height: 100%;
+}
+
+/* Banner Section */
+.banner {
+    position: relative;
+    width: 100%;
+    height: 65vh; /* Adjust height dynamically */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Banner Text Overlay */
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay for better readability */
+    padding: 20px;
+    border-radius: 10px;
+    width: 85%;
+    max-width: 900px;
+}
+
+.banner-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.banner-text p {
+    font-size: 1.3rem;
+}
+
+/* Services Section */
+.services {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.services h2{
+    font-size: 32px;
+    color: #106c26;
+    margin-bottom: 10px;
+}
+
+
+.services h3 {
+    font-size: 20px;
+    color: #096A2E;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.services h4 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.services p {
+    text-align: left;
+    font-size: 21px;
+    padding: 0 100px;
+    line-height: 1.6;
+}
+.eco-friendly h2 {
+    font-size: 32px;
+    color: #106c26;
+    margin-bottom: 20px;
+}
+.eco-friendly h5 {
+    font-size: 18px;
+    color: #096A2E;
+    margin: 10px 0 15px;
+}
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .banner {
+        height: 55vh; /* Reduce height for tablets */
+    }
+
+    .banner-text {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .banner-text h1 {
+        font-size: 2rem;
+    }
+
+    .banner-text p {
+        font-size: 1.1rem;
+    }
+
+    .services {
+        padding: 40px 15px;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1195px) {
+    .green-steps {
+        display: flex;
+        align-items: center;
+        justify-content: center;/* justify-content: space-between; */
+        gap: 30px;
+        flex-wrap: wrap;
+        overflow: hidden;
+    }
+}
+@media screen and (max-width: 768px) {
+    /* .banner {
+        height: 50vh;
+    } */
+
+    .banner-text {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .banner-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .banner-text p {
+        font-size: 1rem;
+    }
+
+    .services h2, .eco-friendly h2 {
+        font-size: 21px;
+    }
+    .services h3 {
+        font-size: 18px;
+    }
+    .services p {
+        font-size: 1rem;
+    }
+    
+}

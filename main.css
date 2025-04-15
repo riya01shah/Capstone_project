@@ -1,0 +1,242 @@
+* {
+    margin:0;
+    padding:0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+a {
+    text-decoration: none !important;
+    color: white;
+}
+/* HEADER CSS START */
+.navigation-header {
+    display: flex;
+    justify-content: space-between;
+}
+.nav-bar {
+    background-color: #096A2E;
+}
+.nav-bar-link {
+    display: flex;
+    align-items: center;
+}
+.nav-links {
+    padding: 0 15px;
+    letter-spacing: 0.5px;
+}
+.menu-icon {
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+/* HEADER CSS END */
+/* FOOTER CSS  Start*/
+/* Footer Styling */
+.footer {
+    /* margin-top: 20px;
+    background-color: #106c26;
+    color: white;
+    padding: 30px 20px;
+    font-family: Arial, sans-serif;
+   
+    bottom: 0;
+    width: 100%;
+    */
+    background-color: #086a2d;
+    color: white;
+    padding: 30px 20px;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-logo {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+.footer-logo img {
+    width: 120px;
+}
+
+.footer-logo p {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.footer-links,
+.footer-contact,
+.footer-social {
+    flex: 1;
+    min-width: 200px;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.footer-links h3,
+.footer-contact h3,
+.footer-social h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin: 5px 0;
+}
+
+.footer-links ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.footer-contact p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.footer-social .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.footer-social .social-icons a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 15px;
+    font-size: 14px;
+}
+.desktop {
+    display: flex;
+}
+.mobile {
+    display: none;
+}
+.white {
+    color: white;
+}
+/* Responsive Design */
+@media screen and (min-width: 768px) and (max-width: 900px) {
+    .footer-logo {
+       min-width: 150px;
+    }
+    .footer-links, .footer-contact, .footer-social {
+       padding-right: 30px;
+       min-width: 165px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-links,
+    .footer-contact,
+    .footer-social {
+        text-align: center;
+    }
+
+    .footer-social .social-icons {
+        justify-content: center;
+    }
+    /* HEADER CSS START */
+.nav-bar {
+    background-color: #096A2E;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.menu-icon {
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    display: block;
+}
+
+/* Sidebar Navigation */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -250px; /* Initially hidden */
+    width: 250px;
+    height: 100%;
+    background-color: #096A2E;
+    /* box-shadow: 2px 0px 5px rgba(0,0,0,0.5); */
+    padding-top: 60px;
+    transition: 0.4s;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.side-menu a,  .side-menu b{
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+}
+
+.side-menu a:hover {
+    background-color: #0b8c3a;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Show Sidebar when Active */
+.side-menu.active {
+    right: 0;
+}
+.desktop {
+    display: none;
+}
+.mobile {
+    display: block;
+}
+/* HEADER CSS END */
+
+}
