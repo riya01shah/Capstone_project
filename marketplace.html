@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://www.paypal.com https://www.paypalobjects.com 'unsafe-inline' 'unsafe-eval';">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace - Smart Waste Management</title>
+    <link href="static/css/main.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/home.css">
+    <link href="static/css/marketplace.css" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://www.paypal.com/sdk/js?client-id=AYsaj81PEVz3i36xLUAoKCBlNNvOMxazFuh47kk3anrsr1UP5LCkLRHREaFmqXA0gdJ9b6ngbfZp8b0-"></script>
+</head>
+<body>
+
+   <div class="nav-bar">
+        <div class="navigation-header">
+            <div class="logo">
+                <img src="static/images/Logo.png" height="100" width="250">
+            </div>
+             <!-- Hamburger Menu Icon -->
+        <div class="menu-icon" onclick="toggleMenu()">
+            ☰
+        </div>
+            <div class="nav-bar-link side-menu" id="sideMenu">
+                <span class="close-btn mobile" onclick="toggleMenu()">×</span>
+                <a href="{{ url_for('home') }}" class="nav-links"> HOME</a>
+                <a href="{{ url_for('disposal') }}" class="nav-links">DISPOSAL</a>
+                <a href="{{ url_for('recycle') }}" class="nav-links"> RECYCLE</a>
+                <a href="{{ url_for('marketplace') }}" class="nav-links"> MARKETPLACE</a>
+                <a href="#" class="nav-links mobile" id="notification-bell" onclick="loadNotifications()" style="cursor: pointer;"> Notification </a>
+                <div id="notification-box" class="notification-popup" style="display: none;"></div>
+                {% if session.get('user') %}
+                    <b><span class="mobile" style="color: white; margin-left: 20px;">Hello! {{ session['user'] }}</span> </b>
+                    <a   class="mobile" href="{{ url_for('logout') }}" class="nav-links">Logout</a>
+                {% else %}
+                    <a href="login"  class="nav-links mobile">Login</a>
+                {% endif %}
+            </div>
+            <div class="nav-bar-link desktop">
+
+                <i class="fa-solid fa-bell white" id="notification-bell" onclick="loadNotifications()" style="cursor: pointer;"></i>
+                <div id="notification-box" class="notification-popup" style="display: none;"></div>
+                {% if session.get('user') %}
+                    <b><span style="color: white; margin-left: 20px;">Hello! {{ session['user'] }}</span> </b>
+                    <a href="{{ url_for('logout') }}" class="nav-links">Logout</a>
+                {% else %}
+                    <a href="login" class="nav-links">Login</a>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+
+    <section class="marketplace-content">
+<div class="waste-listings">
+    {% if waste_listings %}
+        {% for waste in waste_listings %}
+            <div class="listing-card">
+                {% if waste['status'] == 'sold' %}
+                <div class="sold-watermark">SOLD</div>
+                {% endif %}
+                <h3>{{ waste['first_name'] }} {{ waste['last_name'] }} - {{ waste['waste_type'] }} - {{ waste['quantity'] }}</h3>
+                <p><strong>Community:</strong> {{ waste['community'] }}</p>
+                <p><strong>Address:</strong> {{ waste['address'] }}</p>
+                <p><strong>Status:</strong> {{ waste['status'] }}</p>
+                <p><strong>Seller Email:</strong> {{ waste['email'] }}</p>
+{% if waste['status'] != 'sold' %}
+              <form action="{{ url_for('submit_offer') }}" method="POST" class="offer-form">
+    <input type="hidden" name="waste_id" value="{{ waste['_id'] }}">
+
+    <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea name="message" id="message" class="form-textarea" placeholder="Your message to the seller..." required></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="offer_price">Offer Price ($):</label>
+        <input type="number" step="0.01" name="offer_price" id="offer_price" class="form-input" required>
+    </div>
+
+    <button type="submit" class="submit-btn">Send Offer</button>
+</form>
+
+
+                {% set btn_index = loop.index %}
+               {% for offer in offers %}
+    {% if offer.waste_id|string == waste['_id']|string and offer.status == 'Accepted' and session.get('email') == offer.buyer_email %}
+        <p><strong style="color: green;">Your offer was accepted!</strong> You may now complete the payment:</p>
+        <div id="paypal-button-container-{{ waste['_id'] }}"></div>
+
+ <script>
+paypal.Buttons({
+    createOrder: function(data, actions) {
+        return actions.order.create({
+            purchase_units: [{
+                amount: {
+                    value: '{{ offer.offer_price }}'
+                }
+            }]
+        });
+    },
+    onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+            alert('✅ Payment simulated! Thank you, ' + details.payer.name.given_name);
+
+            const transactionPayload = {
+                transaction_id: details.id || "SIMULATED_TXN_" + Math.floor(Math.random() * 1000000),
+                amount: '{{ offer.offer_price }}',
+                user_email: '{{ offer.buyer_email }}',
+                seller_email: '{{ offer.seller_email }}',
+                currency: "CAD",  // ⚠️ Hardcoded to bypass real PayPal parsing
+                payment_method: "Paypal",
+                waste_id: '{{ waste["_id"] }}',
+                status: "SUCCESS"
+            };
+
+            console.log("💳 Sending fake transaction:", transactionPayload);
+
+            fetch('/record_transaction', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(transactionPayload)
+            })
+            .then(res => {
+                if (!res.ok) throw new Error("Server error while recording transaction");
+                return res.json();
+            })
+            .then(data => {
+                console.log("✅ Transaction recorded:", data.message);
+                alert("🚚 Transport started automatically!");
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error("❌ Error recording transaction:", error);
+                alert("Something went wrong. Please try again.");
+            });
+        });
+    }
+}).render('#paypal-button-container-{{ waste["_id"] }}');
+</script>
+
+
+
+    {% endif %}
+{% endfor %}
+
+{% else %}
+    <!-- If sold, show a note -->
+    <p><em style="color: Red;">This item is already sold. Offers and payments are disabled.</em></p>
+{% endif %}
+                {% if session.get('email') == waste['email'] %}
+                    <div class="offer-management">
+                        <h4>Offers Received:</h4>
+                        {% set found_offer = false %}
+                        {% for offer in offers %}
+                            {% if offer.waste_id|string == waste['_id']|string %}
+                                {% set found_offer = true %}
+                                <div class="single-offer-box">
+                                    <p><strong>Buyer:</strong> {{ offer.buyer_email }}</p>
+                                    <p><strong>Message:</strong> {{ offer.message }}</p>
+                                    <p><strong>Offered Price:</strong> ${{ offer.offer_price }}</p>
+                                    <p><strong>Status:</strong> {{ offer.status }}</p>
+                                    {% if offer.status == 'Pending' %}
+                                        <form action="{{ url_for('update_offer_status', offer_id=offer._id, action='Accepted') }}" method="POST" style="display:inline;">
+                                            <button type="submit">✅ Accept</button>
+                                        </form>
+                                        <form action="{{ url_for('update_offer_status', offer_id=offer._id, action='Rejected') }}" method="POST" style="display:inline;">
+                                            <button type="submit">❌ Reject</button>
+                                        </form>
+                                    {% endif %}
+                                </div>
+                                <hr>
+                            {% endif %}
+                        {% endfor %}
+                        {% if not found_offer %}
+                            <p><em>No offers yet for this waste.</em></p>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No available listings at the moment. Please check back later.</p>
+    {% endif %}
+</div>
+</section>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="static/images/logo-square.jpg" alt="Smart Waste Management Logo">
+            </div>
+            <div class="footer-links">
+                <h3>Quick Link</h3>
+                <ul>
+                    <li><a href="{{ url_for('disposal') }}">Disposal</a></li>
+                    <li><a href="{{ url_for('recycle') }}">Recycle</a></li>
+                    <li><a href="{{ url_for('marketplace') }}">Marketplace</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>CONTACT US</h3>
+                <p><strong>Smart Waste Management</strong></p>
+                <p>126 Queen St. E, Milton,<br>Ontario</p>
+            </div>
+            <div class="footer-social">
+                <h3>FOLLOW US</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © Smart Waste Management 2025. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- PayPal SDK -->
+<script>
+     function loadNotifications() {
+            fetch('/get_notifications')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data); // Debugging output
+                    const box = document.getElementById('notification-box');
+                    box.innerHTML = '';
+                    if (data.length === 0) {
+                        box.innerHTML = "<p>No new notifications</p>";
+                    } else {
+                        data.forEach(n => {
+                            const p = document.createElement('p');
+                            p.innerText = `${n.message} (${n.created_at})`;
+                            box.appendChild(p);
+                        });
+                    }
+                    box.style.display = 'block';
+                });
+        }
+        document.addEventListener('click', function(e) {
+            if (!document.getElementById('notification-bell').contains(e.target)) {
+                document.getElementById('notification-box').style.display = 'none';
+            }
+        });
+</script>
+
+
+</body>
+</html>

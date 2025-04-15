@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disposal Page</title>
+    <link href="static/css/main.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/home.css">
+    <link rel="stylesheet" href="static/css/disposal.css">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div class="nav-bar">
+    <div class="navigation-header">
+        <div class="logo">
+            <img src="static/images/Logo.png" height="100" width="250" alt="Smart Waste Management Logo">
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <div class="nav-bar-link side-menu" id="sideMenu">
+            <span class="close-btn mobile" onclick="toggleMenu()">×</span>
+            <a href="{{ url_for('home') }}" class="nav-links">HOME</a>
+            <a href="{{ url_for('disposal') }}" class="nav-links">DISPOSAL</a>
+            <a href="{{ url_for('recycle') }}" class="nav-links">RECYCLE</a>
+            <a href="{{ url_for('marketplace') }}" class="nav-links">MARKETPLACE</a>
+            <a href="#" class="nav-links mobile" id="notification-bell" onclick="loadNotifications()" aria-label="Notification">Notification</a>
+            <div id="notification-box" class="notification-popup" style="display: none;"></div>
+            {% if session.get('user') %}
+            <b><span class="mobile" style="color: white; margin-left: 20px;">Hello! {{ session['user'] }}</span></b>
+            <a class="mobile" href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+            <a href="login" class="nav-links mobile">Login</a>
+            {% endif %}
+        </div>
+        <div class="nav-bar-link desktop">
+            <i class="fa-solid fa-bell white" id="notification-bell" onclick="loadNotifications()" aria-label="Notification"></i>
+            <div id="notification-box" class="notification-popup" style="display: none;"></div>
+            {% if session.get('user') %}
+            <b><span style="color: white; margin-left: 20px;">Hello! {{ session['user'] }}</span></b>
+            <a href="{{ url_for('logout') }}" class="nav-links">Logout</a>
+            {% else %}
+            <a href="login" class="nav-links">Login</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<section class="hero">
+    <img src="static/Priyanka_new_Image/disposal_hero.jpg" alt="Smart Waste Bins Truck and Workers Illustration">
+    <div class="hero-text disposal-text">
+        <h1>Efficient & Smart Waste Disposal – A Cleaner<br>Future Starts Here!</h1>
+        <h3>Smarter Solutions, Cleaner Communities</h3>
+        <p>Efficient and smart waste disposal is a modern solution to waste management challenges, ensuring proper segregation, optimized collection, and sustainable disposal practices. By integrating technology like smart bins, automated tracking, and waste-to-energy solutions, cities can significantly reduce landfill waste and promote recycling.</p>
+        <div id="moreText">
+            <p>While higher initial costs and maintenance pose challenges, the long-term benefits of environmental conservation, cost savings, and improved public health make it a necessary step toward a cleaner and greener future...</p>
+        </div>
+        <p class="read-btn" onclick="toggleText()" id="toggleBtn">Read more</p>
+    </div>
+</section>
+
+
+<!-- PART 2 of 4 -->
+<div class="effects">
+    <div class="hero-text">
+        <h2>Merits & Demerits of Efficient <br> & Smart Waste Disposal</h2>
+    </div>
+    <div class="pointers">
+        <div class="left-wrp">
+            <div class="desktop">
+                <h3>Merits:</h3>
+            </div>
+            <div>
+                <img src="static/Priyanka_new_Image/merits_image.jpeg" alt="Smart Waste Disposal Benefits Graphic" class="merits-img">
+            </div>
+        </div>
+        <div class="mt-20">
+            <div class="mobile">
+                <h3>Merits:</h3>
+            </div>
+            <p><strong>Reduces Environmental Pollution</strong> – Proper disposal prevents land, water, and air contamination.</p>
+            <p><strong>Enhances Recycling Efficiency</strong> – Waste segregation allows for better recycling and resource recovery.</p>
+            <p><strong>Optimized Waste Collection</strong> – Smart bins and data-driven collection reduce fuel consumption and costs.</p>
+            <p><strong>Improves Public Health</strong> – Reducing unmanaged waste lowers risks of diseases and contamination.</p>
+            <p><strong>Encourages Sustainable Living</strong> – Educates and promotes responsible waste management in communities.</p>
+        </div>
+    </div>
+    <div class="pointers">
+        <div class="mt-20">
+            <div class="mobile right-wrp">
+                <img src="static/Priyanka_new_Image/demerits_image.jpeg" alt="Demerits of Waste Disposal" class="merits-img">
+            </div>
+            <div class="mobile mt-20">
+                <h3>Demerits:</h3>
+            </div>
+            <p><strong>High Initial Costs</strong> – Implementing smart waste disposal systems requires investment in technology.</p>
+            <p><strong>Dependency on Technology</strong> – Technical failures in smart bins or tracking systems can cause disruptions.</p>
+            <p><strong>Public Awareness & Adoption</strong> – Success depends on user participation and proper waste segregation habits.</p>
+            <p><strong>Maintenance & Upkeep</strong> – Smart waste bins and IoT systems require regular monitoring and servicing.</p>
+        </div>
+        <div class="right-wrp">
+            <div class="desktop">
+                <h3>Demerits:</h3>
+            </div>
+            <div class="desktop">
+                <img src="static/Priyanka_new_Image/demerits_image.jpeg" alt="Waste Management System Issues" class="merits-img">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hero-text disposal-text">
+    <h2>Provide Your Details Below for Hassle-Free Waste Disposal!</h2>
+    <h3>Smart Waste Disposal – Simple, Efficient, and Eco-Friendly! ♻️🚛</h3>
+</div>
+<section class="form-section">
+    <div class="form-content">
+        <div class="form-image">
+            <img src="static/Priyanka_new_Image/waste_truck.jpg" alt="Waste Management Truck">
+        </div>
+        <div class="form-container">
+            <h2>Personal Information</h2>
+            <form id="wasteForm" action="{{ url_for('disposal') }}" method="POST">
+                <div class="form-group flex-wrp">
+                    <div class="input-box">
+                        <label for="firstName">First Name <span class="red">*</span></label>
+                        <input type="text" id="firstName" name="firstName" value="{{ first_name }}" readonly>
+                        <p id="firstNameError" class="error"></p>
+                    </div>
+                    <div class="input-box">
+                        <label for="lastName">Last Name <span class="red">*</span></label>
+                        <input type="text" id="lastName" name="lastName" value="{{ last_name }}" readonly>
+                        <p id="lastNameError" class="error"></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email <span class="red">*</span></label>
+                    <input type="text" id="email" name="email" value="{{ email }}" readonly>
+                    <p id="emailerror" class="error"></p>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact <span class="red">*</span></label>
+                    <input type="text" id="contact" name="contact" value="{{ phone }}" readonly>
+                    <p id="contactError" class="error"></p>
+                </div>
+                <div class="form-group flex-wrp">
+                    <div class="input-box">
+                        <label for="community">Community</label>
+                        <select id="community" name="community">
+                            <option value="">Select Community...</option>
+                            <option value="Household">Household</option>
+                            <option value="Industry">Industry</option>
+                        </select>
+                        <p id="communityError" class="error"></p>
+                    </div>
+                    <div class="input-box">
+                        <label for="wasteType">Waste Type</label>
+                        <select id="wasteType" name="wasteType">
+                            <option value="">Waste Type...</option>
+                            <option value="Plastic">Plastic</option>
+                            <option value="Metal">Metal</option>
+                            <option value="Glass">Glass</option>
+                            <option value="Organic">Organic</option>
+                            <option value="Paper">Paper</option>
+                        </select>
+                        <p id="wasteTypeError" class="error"></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="text" id="quantity" name="quantity" placeholder="Enter quantity (e.g., 5 LB)">
+                    <p id="quantityError" class="error"></p>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea placeholder="Enter your address" id="address" name="address"></textarea>
+                    <p id="addressError" class="error"></p>
+                </div>
+                <button type="submit" id="submitBtn" name="submitBtn">SUBMIT</button>
+            </form>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category, message in messages %}
+                  {% if category == 'success' %}
+                    <p class="success-msg" style="color: red; font-weight: 300;">{{ message }}</p>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</section>
+<!-- PART 4 of 4 -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <img src="static/images/logo-square.jpg" alt="Smart Waste Management Logo">
+        </div>
+        <div class="footer-links">
+            <h3>Quick Link</h3>
+            <ul>
+                <li><a href="{{ url_for('disposal') }}">Disposal</a></li>
+                <li><a href="{{ url_for('recycle') }}">Recycle</a></li>
+                <li><a href="{{ url_for('marketplace') }}">Marketplace</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h3>CONTACT US</h3>
+            <p><strong>Smart Waste Management</strong></p>
+            <p>126 Queen St. E, Milton,<br>Ontario</p>
+        </div>
+        <div class="footer-social">
+            <h3>FOLLOW US</h3>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>Copyright © Smart Waste Management 2025. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById("sideMenu");
+        menu.classList.toggle("active");
+    }
+
+    function loadNotifications() {
+        fetch('/get_notifications')
+            .then(response => response.json())
+            .then(data => {
+                const box = document.getElementById('notification-box');
+                box.innerHTML = '';
+                if (data.length === 0) {
+                    box.innerHTML = "<p>No new notifications</p>";
+                } else {
+                    data.forEach(n => {
+                        const p = document.createElement('p');
+                        p.innerText = `${n.message} (${n.created_at})`;
+                        box.appendChild(p);
+                    });
+                }
+                box.style.display = 'block';
+            });
+    }
+
+    document.addEventListener('click', function(e) {
+        if (!document.getElementById('notification-bell').contains(e.target)) {
+            document.getElementById('notification-box').style.display = 'none';
+        }
+    });
+
+    function toggleText() {
+        const moreText = document.getElementById("moreText");
+        const btn = document.getElementById("toggleBtn");
+        moreText.classList.toggle("open");
+        btn.textContent = moreText.classList.contains("open") ? "Read less" : "Read more";
+    }
+</script>
+
+<script>
+    document.getElementById("submitBtn").addEventListener("click", function(event) {
+        event.preventDefault();
+        let isValid = true;
+
+        const firstName = document.getElementById("firstName").value.trim();
+        const lastName = document.getElementById("lastName").value.trim();
+        const contact = document.getElementById("contact").value.trim();
+        const community = document.getElementById("community").value;
+        const wasteType = document.getElementById("wasteType").value;
+        const quantity = document.getElementById("quantity").value.trim();
+        const address = document.getElementById("address").value.trim();
+
+        document.querySelectorAll(".error").forEach(el => el.textContent = "");
+
+        if (firstName === "") {
+            document.getElementById("firstNameError").textContent = "This field is required";
+            isValid = false;
+        } else if (!/^[A-Za-z]+$/.test(firstName)) {
+            document.getElementById("firstNameError").textContent = "First name should only contain letters.";
+            isValid = false;
+        }
+
+        if (lastName === "") {
+            document.getElementById("lastNameError").textContent = "This field is required";
+            isValid = false;
+        } else if (!/^[A-Za-z]+$/.test(lastName)) {
+            document.getElementById("lastNameError").textContent = "Last name should only contain letters.";
+            isValid = false;
+        }
+
+        if (contact === "") {
+            document.getElementById("contactError").textContent = "This field is required";
+            isValid = false;
+        } else if (!/^\d{10}$/.test(contact)) {
+            document.getElementById("contactError").textContent = "Mobile number must be exactly 10 digits.";
+            isValid = false;
+        }
+
+        if (community === "") {
+            document.getElementById("communityError").textContent = "This field is required";
+            isValid = false;
+        }
+
+        if (wasteType === "") {
+            document.getElementById("wasteTypeError").textContent = "This field is required";
+            isValid = false;
+        }
+
+        if (quantity === "") {
+            document.getElementById("quantityError").textContent = "This field is required";
+            isValid = false;
+        } else if (!/^\d+(\.\d+)?\s*LB$/.test(quantity)) {
+            document.getElementById("quantityError").textContent = "Quantity must be a number followed by 'LB' (e.g., 5 LB, 10.5 LB).";
+            isValid = false;
+        }
+
+        if (address === "") {
+            document.getElementById("addressError").textContent = "This field is required";
+            isValid = false;
+        } else if (address.length < 5) {
+            document.getElementById("addressError").textContent = "Please enter a valid address.";
+            isValid = false;
+        }
+
+        if (isValid) {
+            document.getElementById("wasteForm").submit();
+        }
+    });
+</script>
+</body>
+</html>
+

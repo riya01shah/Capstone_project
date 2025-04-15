@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin1.css') }}?v=1.1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main_admin.css') }}?v=1.1">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            border: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="visually-hidden">Admin Panel - Smart Waste Management System</h1>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar" aria-label="Main navigation">
+        <div class="navigation-header">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/Logo.png') }}" height="100" width="250" alt="Smart Waste Management Logo">
+            </div>
+            <div class="nav-links">
+                <span>Welcome, Admin</span>
+                <a href="{{ url_for('admin_logout') }}" class="logout-btn" aria-label="Logout from Admin Panel">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Dashboard -->
+    <main class="admin-dashboard">
+        <aside class="sidebar" aria-label="Admin Menu">
+            <h2>Admin Menu</h2>
+            <button id="tab-users" onclick="showTab('users')" class="tab-btn" aria-controls="users" aria-selected="true" role="tab">Users</button>
+            <button id="tab-waste" onclick="showTab('waste')" class="tab-btn" aria-controls="waste" aria-selected="false" role="tab">Waste Listings</button>
+            <button id="tab-transport" onclick="showTab('transport')" class="tab-btn" aria-controls="transport" aria-selected="false" role="tab">Ongoing Waste Transport</button>
+            <button id="tab-transactions" onclick="showTab('transactions')" class="tab-btn">Transactions</button>
+
+        </aside>
+
+        <section class="content" aria-live="polite">
+            <div id="users" class="tab-content" role="tabpanel" aria-labelledby="tab-users">
+                <h2>Users</h2>
+                <div class="table-container">
+                    <table border="1">
+                        <caption>List of Registered Users</caption>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+
+                                <th>Location</th>
+                                <th>Phone</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ user.first_name }} {{ user.last_name }}</td>
+                                <td>{{ user.email }}</td>
+
+                                <td>{{ user.location }}</td>
+                                <td>{{ user.phone }}</td>
+                                <td>
+
+                                    <button onclick="deleteUser('{{ user.email }}')" class="delete-btn" aria-label="Delete user {{ user.first_name }} {{ user.last_name }}">Delete</button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="waste" class="tab-content" role="tabpanel" aria-labelledby="tab-waste">
+    <h2>Waste Listings</h2>
+    <div class="table-container">
+        <table border="1">
+            <caption>List of Waste Listings</caption>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User</th>
+                    <th>Type</th>
+                    <th>Quantity</th>
+
+                    <th>Address</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for waste in waste_listings %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ waste.first_name }} {{ waste.last_name }}</td>
+                    <td>{{ waste.waste_type }}</td>
+                    <td>{{ waste.quantity }}</td>
+
+                    <td>{{ waste.address }}</td>
+                     <td>{{ waste.status or 'Pending' }}</td>
+                    <td>
+                        <form action="{{ url_for('approve_waste', waste_id=waste._id) }}" method="post" style="display:inline;">
+                            <button type="submit" class="approve-btn" aria-label="Approve waste listing {{ waste.type }}">Approve</button>
+                        </form>
+                        <form action="{{ url_for('delete_waste', waste_id=waste._id) }}" method="post" style="display:inline;">
+                            <button type="submit" class="delete-btn" aria-label="Delete waste listing {{ waste.type }}">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+            <div id="transport" class="tab-content" role="tabpanel" aria-labelledby="tab-transport">
+                <h2>Ongoing Waste Transport</h2>
+                <div class="table-container">
+                    <table border="1">
+                        <caption>Current Waste Transport Details</caption>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>User</th>
+                                <th>Seller</th>
+                                <th>Type</th>
+                                <th>Quantity</th>
+                                <th>Status</th>
+                                <th>Created Date</th>
+<!--                                <th>Actions</th>-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for transport in transport_list %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ transport.user }}</td>
+                                <td>{{ transport.seller }}</td>
+                                <td>{{ transport.type }}</td>
+                                <td>{{ transport.quantity }} LB</td>
+                                <td>
+                                    <select onchange="updateTransportStatus('{{ transport._id }}', this.value)" aria-label="Update status for transport {{ transport.type }}">
+                                        <option value="In Transit">In Transit</option>
+                                        <option value="Delayed">Delayed</option>
+                                        <option value="Completed">Completed</option>
+                                    </select>
+                                </td>
+                                <td>{{ transport.created_date }}</td>
+<!--                                <td>-->
+<!--                                    <button onclick="completeTransport('{{ transport._id }}')" class="complete-btn" aria-label="Mark transport {{ transport.type }} as Completed">Mark as Completed</button>-->
+<!--                                </td>-->
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="transactions" class="tab-content" role="tabpanel">
+   <h2>Transaction History</h2>
+<div class="table-container">
+    <table border="1">
+        <caption>Recent Payments</caption>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>User</th>
+                <th>Amount</th>
+                <th>Currency</th>
+                <th>Status</th>
+                <th>Transaction ID</th>
+                <th>Payment Method</th>
+                <th>Date</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ transaction.user_email }}</td>
+                <td>${{ transaction.amount }}</td>
+                <td>{{ transaction.currency }}</td>
+                <td>{{ transaction.status }}</td>
+                <td>{{ transaction.transaction_id }}</td>
+                <td>{{ transaction.payment_method }}</td>
+                <td>{{ transaction.timestamp }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="admin-footer" role="contentinfo">
+        <p>Copyright © Smart Waste Management 2025. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+    function deleteUser(email) {
+        fetch(`/delete_user/${email}`, { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) location.reload();
+                else alert(data.message || 'Failed to delete user.');
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function deleteWaste(wasteId) {
+        fetch(`/delete_waste/${wasteId}`, { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) location.reload();
+                else alert(data.message || 'Failed to delete waste listing.');
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function approveWaste(wasteId) {
+        fetch(`/approve_waste/${wasteId}`, { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) location.reload();
+                else alert(data.message || 'Failed to approve waste listing.');
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function updateTransportStatus(transportId, status) {
+        fetch(`/update_transport/${transportId}/${status}`, { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) location.reload();
+                else alert(data.message || 'Failed to update transport status.');
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function completeTransport(transportId) {
+        if (confirm("Mark transport as completed?")) {
+            fetch(`/delete_transport/${transportId}`, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) location.reload();
+                    else alert(data.message || 'Failed to complete transport.');
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    }
+
+    function showTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(tab => {
+            tab.classList.remove('active'); // Remove active class from all tabs
+            tab.style.display = 'none';
+            tab.setAttribute('aria-hidden', 'true');
+        });
+
+        const selectedTab = document.getElementById(tabId);
+        if (selectedTab) {
+            selectedTab.classList.add('active'); // Show the selected tab
+            selectedTab.style.display = 'block';
+            selectedTab.setAttribute('aria-hidden', 'false');
+        }
+
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.setAttribute('aria-selected', 'false');
+        });
+
+        const selectedButton = document.querySelector(`[aria-controls='${tabId}']`);
+        if (selectedButton) {
+            selectedButton.setAttribute('aria-selected', 'true');
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        showTab('users');
+    });
+
+        function updateTransportStatus(transportId, newStatus) {
+            fetch('/update_status', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    transport_id: transportId,
+                    status: newStatus
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message || 'Status updated.');
+            })
+            .catch(error => {
+                console.error('Error updating status:', error);
+            });
+        }
+
+
+</script>
+
+
+</body>
+</html>

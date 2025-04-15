@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link href="static/css/main.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="navigation-header">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/Logo.png') }}" height="100" width="250" alt="Smart Waste Logo">
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+            <div class="nav-bar-link side-menu" id="sideMenu">
+                <span class="close-btn mobile" onclick="toggleMenu()">×</span>
+                <a href="{{ url_for('home') }}" class="nav-links">HOME</a>
+                <a href="{{ url_for('disposal') }}" class="nav-links">DISPOSAL</a>
+                <a href="{{ url_for('recycle') }}" class="nav-links">RECYCLE</a>
+                <a href="{{ url_for('marketplace') }}" class="nav-links">MARKETPLACE</a>
+                <a href="#" class="nav-links mobile" id="notification-bell" onclick="loadNotifications()" aria-label="Notification">Notification</a>
+                <div id="notification-box" class="notification-popup" style="display: none;"></div>
+                {% if session.get('user') %}
+                    <span class="mobile" style="color: white; margin-left: 20px;"><strong>Hello! {{ session['user'] }}</strong></span>
+                    <a class="mobile" href="{{ url_for('logout') }}">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="nav-links mobile">Login</a>
+                {% endif %}
+            </div>
+            <div class="nav-bar-link desktop">
+                <i class="fa-solid fa-bell white" id="notification-bell" onclick="loadNotifications()" aria-label="Notification"></i>
+                <div id="notification-box" class="notification-popup" style="display: none;"></div>
+                {% if session.get('user') %}
+                    <span style="color: white; margin-left: 20px;"><strong>Hello! {{ session['user'] }}</strong></span>
+                    <a href="{{ url_for('logout') }}" class="nav-links">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="nav-links">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <section class="hero">
+        <img src="{{ url_for('static', filename='Priyanka_new_Image/hero-image.jpg') }}" alt="Smart Waste Bins Hero Image">
+        <div class="hero-text">
+            <h1>Welcome to the Future of Waste Management!</h1>
+            <p>Say hello to a cleaner, smarter world! Our Smart Waste Management System ensures efficient waste collection, reduces pollution, and promotes sustainability using cutting-edge technology. Together, we can build a greener future—one smart bin at a time!</p>
+            <div id="moreText">
+                <p>The Smart Waste Management System is a modern approach to handling waste in a more organized, responsible, and eco-friendly way...</p>
+            </div>
+            <p class="read-btn" onclick="toggleText()" id="toggleBtn">Read more</p>
+        </div>
+    </section>
+    <section class="services">
+        <h2>Our Services</h2>
+        <h3>Smarter Waste, Greener Future!</h3>
+        <p>
+            We provide intelligent and efficient waste management solutions to make cities cleaner and more sustainable.
+            Our technology-driven approach ensures optimized waste collection, real-time monitoring, and eco-friendly disposal.
+        </p>
+
+        <div class="service-box">
+            <img src="{{ url_for('static', filename='Priyanka_new_Image/waste-disposal.jpeg') }}" alt="Efficient Waste Disposal Image">
+            <div class="mt-20">
+                <h4>Efficient & Smart Waste Disposal</h4>
+                <p>Proper waste disposal is essential for a clean and healthy environment. By using color-coded bins for recycling, compost, and general waste, we ensure responsible waste segregation and minimize landfill waste.</p>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <div class="service-mob">
+                <img src="{{ url_for('static', filename='Priyanka_new_Image/recycling.jpg') }}" class="mobile" alt="Recycling Waste Mobile Image">
+            </div>
+            <div class="mt-20">
+                <h4>Recycling Waste Disposal</h4>
+                <p>Recycling is the key to a sustainable future. Proper waste segregation ensures that materials like plastic, paper, glass, and metal can be reused instead of ending up in landfills.</p>
+            </div>
+            <img src="{{ url_for('static', filename='Priyanka_new_Image/recycling.jpg') }}" class="desktop" alt="Recycling Waste Desktop Image">
+        </div>
+    </section>
+    <section class="eco-friendly">
+        <h2>Eco-Friendly Solutions for <br> Smart Waste Management</h2>
+        <div class="icons">
+            <div class="icon-box">
+                <img src="{{ url_for('static', filename='Priyanka_new_Image/sustainable_icon.jpg') }}" alt="Sustainable Waste Collection Icon">
+                <h5 class="icon-hd">Sustainable <br>Waste Collection</h5>
+                <p class="icon-text">Effectively collecting waste from users while ensuring proper segregation and eco-friendly disposal.</p>
+            </div>
+            <div class="icon-box">
+                <img src="{{ url_for('static', filename='Priyanka_new_Image/recycle_icon.png') }}" alt="Recycling and Reuse Icon">
+                <h5 class="icon-hd">Recycling <br>& Reuse</h5>
+                <p class="icon-text">Presenting a cleaning economy by reprocessing waste into reusable materials, reducing waste.</p>
+            </div>
+            <div class="icon-box">
+                <img src="{{ url_for('static', filename='Priyanka_new_Image/innovation_icon.jpeg') }}" alt="Green Innovation Icon">
+                <h5 class="icon-hd">Green Innovation</h5>
+                <p class="icon-text">Using modern technologies to minimize waste, reduce pollution and contribute to a cleaner environment.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="green-steps-container">
+        <div class="green-steps">
+            <img src="{{ url_for('static', filename='Priyanka_new_Image/forest.jpg') }}" alt="Green Future Forest Image">
+            <div class="green-steps-content">
+                <h3>Taking Small Steps for a <br> Greener Tomorrow</h3>
+                <p>One of the major challenges we face today is improper waste disposal and its impact on the environment. Without efficient recycling systems, pollution increases, harming our air, water, and soil.</p>
+                <p>To build a sustainable future, we must take responsibility by:</p>
+                <ul class="tick">
+                    <li>Properly segregating waste</li>
+                    <li>Encouraging recycling and reusing materials</li>
+                    <li>Reducing plastic usage</li>
+                </ul>
+                <p>Every small step counts! Together, we can make the Earth cleaner and greener for generations to come.</p>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="{{ url_for('static', filename='images/logo-square.jpg') }}" alt="Smart Waste Management Logo">
+            </div>
+            <div class="footer-links">
+                <h3>Quick Link</h3>
+                <ul>
+                    <li><a href="{{ url_for('disposal') }}">Disposal</a></li>
+                    <li><a href="{{ url_for('recycle') }}">Recycle</a></li>
+                    <li><a href="{{ url_for('marketplace') }}">Marketplace</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>CONTACT US</h3>
+                <p><strong>Smart Waste Management</strong></p>
+                <p>126 Queen St. E, Milton,<br>Ontario</p>
+            </div>
+            <div class="footer-social">
+                <h3>FOLLOW US</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © Smart Waste Management 2025. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("sideMenu");
+            menu.classList.toggle("active");
+        }
+
+        function loadNotifications() {
+            fetch('/get_notifications')
+                .then(response => response.json())
+                .then(data => {
+                    const box = document.getElementById('notification-box');
+                    box.innerHTML = '';
+                    if (data.length === 0) {
+                        box.innerHTML = "<p>No new notifications</p>";
+                    } else {
+                        data.forEach(n => {
+                            const p = document.createElement('p');
+                            p.innerText = `${n.message} (${n.created_at})`;
+                            box.appendChild(p);
+                        });
+                    }
+                    box.style.display = 'block';
+                });
+        }
+
+        document.addEventListener('click', function (e) {
+            if (!document.getElementById('notification-bell').contains(e.target)) {
+                document.getElementById('notification-box').style.display = 'none';
+            }
+        });
+
+        function toggleText() {
+            const moreText = document.getElementById("moreText");
+            const btn = document.getElementById("toggleBtn");
+
+            moreText.classList.toggle("open");
+
+            if (moreText.classList.contains("open")) {
+                btn.textContent = "Read less";
+            } else {
+                btn.textContent = "Read more";
+            }
+        }
+    </script>
+
+</body>
+</html>

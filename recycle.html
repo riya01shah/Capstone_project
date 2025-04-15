@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recycle Page</title>
+    <link href="static/css/main.css" rel="stylesheet">
+    <link href="static/css/recycle.css" rel="stylesheet">
+    <!--<link href="static/css/account.css/css/account.css" rel="stylesheet"> -->
+    <link href="static/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/home.css">
+
+    <link href="static/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/disposal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg">
+    <div class="nav-bar">
+        <div class="navigation-header">
+            <div class="logo">
+                <img src="static/images/Logo.png" height="100" width="250">
+            </div>
+             <!-- Hamburger Menu Icon -->
+        <div class="menu-icon" onclick="toggleMenu()">
+            ☰
+        </div>
+            <div class="nav-bar-link side-menu" id="sideMenu">
+                <span class="close-btn mobile" onclick="toggleMenu()">×</span>
+                <a href="{{ url_for('home') }}" class="nav-links"> HOME</a>
+                <a href="{{ url_for('disposal') }}" class="nav-links">DISPOSAL</a>
+                <a href="{{ url_for('recycle') }}" class="nav-links"> RECYCLE</a>
+                <a href="{{ url_for('marketplace') }}" class="nav-links"> MARKETPLACE</a>
+                <a href="#" class="nav-links mobile"> Notification </a>
+                {% if session.get('user') %}
+                    <b><span class="mobile" style="color: white; margin-left: 20px;">Hello! {{ session['user'] }}</span> </b>
+                    <a   class="mobile" href="{{ url_for('logout') }}" class="nav-links">Logout</a>
+                {% else %}
+                    <a href="login"  class="nav-links mobile">Login</a>
+                {% endif %}
+            </div>
+            <div class="nav-bar-link desktop">
+
+                <i class="fa-solid fa-bell white"></i>
+                {% if session.get('user') %}
+                    <b><span style="color: white; margin-left: 20px;">Hello! {{ session['user'] }}</span> </b>
+                    <a href="{{ url_for('logout') }}" class="nav-links">Logout</a>
+                {% else %}
+                    <a href="login" class="nav-links">Login</a>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+
+    <section class="hero">
+        <img src="static/Priyanka_new_Image/recycle_hero.png" alt="Smart Waste Bins">
+
+    </section>
+    <div class="hero-text">
+        <h1>Recycling Waste Disposal</h1>
+        <h2>Turning Waste Into Resouces ♻️</h2>
+    </div>
+
+<section class="green-steps-container">
+            <div class="green-steps">
+                <img src="static/Priyanka_new_Image/Rectangle 37.png" alt="Green Future">
+                <div class="green-steps-content">
+            <p>Recycling waste disposal is a crucial step toward a sustainable future. By separating recyclable materials like plastic,
+                paper, glass, and metal, we reduce landfill waste and promote the reusability of valuable resources. Recycling helps in
+                 conserving energy, lowering pollution, and protecting the environment. Through proper waste management and awareness,
+                 we can contribute to
+                a cleaner and greener planet. Every small action in recycling makes a big impact on the future!</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="hero-text">
+            <h1> RRR: Recycle, Reduce, Reuse</h1>
+            <h2>A Sustainable Approach to Waste Management ♻️</h2>
+        </div>
+
+    </section>
+
+
+
+    <section class="rrr-section">
+
+
+        <div class="rrr-card">
+
+            <div class="waste-content">
+                <div class="waste-listing">
+                    <img src="static/Priyanka_new_Image/reduce.png" alt="Reduce">
+                    <div>
+                        <h2 class="mb-7 mt-15">Reduce</h2>
+                        <h3 class="waste-heading">Minimize Waste Production</h3>
+
+                        <ul class="mt-15">
+                            <li>🔹 Buy only what is necessary to avoid excess waste.</li>
+                    <li>🔹 Opt for eco-friendly and durable products instead of single-use plastics.</li>
+                    <li>🔹 Use digital alternatives to reduce paper consumption.</li>
+                    <li>🔹 Avoid food wastage by planning meals efficiently.</li>
+                        </ul>
+                    </div>
+
+
+                   </div>
+
+
+            </div>
+        </div>
+
+        <div class="rrr-card">
+
+            <div class="waste-content">
+                <div class="waste-listing">
+                    <img src="static/Priyanka_new_Image/reuse.png" alt="Reuse">
+                    <div>
+                        <h2 class="mb-7 mt-15">Reuse</h2>
+                        <h3 class="waste-heading">Extend the Life of Products</h3>
+
+                        <ul class="mt-15">
+                            <li>🔹 Repurpose old materials instead of throwing them away.</li>
+                            <li>🔹 Donate items like clothes, furniture, and electronics.</li>
+                            <li>🔹 Use reusable bags, bottles, and containers to cut down on waste.</li>
+                            <li>🔹 Repair broken items instead of discarding them.</li>
+                        </ul>
+                    </div>
+
+
+                   </div>
+
+
+            </div>
+        </div>
+        <div class="rrr-card">
+
+            <div class="waste-content">
+                <div class="waste-listing">
+                    <img src="static/Priyanka_new_Image/recycle.png" alt="Recycle">
+                    <div>
+                        <h2 class="mb-7 mt-15">Recycle</h2>
+                        <h3 class="waste-heading">Convert Waste into Resources</h3>
+
+                        <ul class="mt-15">
+                            <li>🔹 Sort waste into recyclable materials like plastic, paper, glass, and metal.</li>
+                            <li>🔹 Choose products made from recycled materials.</li>
+                            <li>🔹 Support and participate in local recycling programs.</li>
+                            <li>🔹 Dispose of e-waste responsibly to prevent toxic pollution.</li>
+                        </ul>
+                    </div>
+
+
+                   </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+        <section class="follow-rrr-container">
+         <div class="rrr-card">
+
+
+
+                <h2 class="fs-30">Why Follow RRR?</h2>
+                <div class="follow-rrr-listing">
+
+
+                <ul class="mt-15">
+                    <li>✅ Reduces landfill waste and pollution 🌱</li>
+                        <li>✅ Saves energy and natural resources</li>
+                        <li>✅ Promotes a circular economy ♻️</li>
+                        <li>✅ Helps in combating climate change 🌍</li>
+                </ul>
+                <img src="static/Priyanka_new_Image/rrr.jpg" alt="Green Future">
+                    </div>
+
+        </div>
+        </section>
+
+
+<div class="hero-text">
+    <h1 class="recycleheading">Contribute to a Greener Future: Recycle Now!</h1>
+    <h2> A Greener Earth Starts with Your Smart Choices!</h2>
+</div>
+
+<section class="form-section">
+        <div class="form-container">
+
+            <form id="recycleForm" action="{{ url_for('recycle') }}" method="POST">
+                <div class="form-group flex-wrp">
+                    <div class="input-box">
+                        <label>First Name <span class="red">*</span></label>
+                        <input type="text" id="firstName" name="firstName" value="{{ first_name }}" readonly>
+                        <p id="firstNameError" class="error"></p>
+                    </div>
+                    <div class="input-box">
+                        <label>Last Name <span class="red">*</span></label>
+                        <input type="text" id="lastName" name="lastName" value="{{ last_name }}" readonly>
+                        <p id="lastNameError" class="error"></p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Item Name <span class="red">*</span></label>
+                    <input type="text" id="item_name" name="item_name" placeholder="Enter item name">
+                    <p id="itemNameError" class="error"></p>
+                </div>
+
+                <div class="form-group flex-wrp">
+                    <div class="input-box">
+                        <label>Category</label>
+                        <select id="category" name="category">
+                            <option value="">Select Category...</option>
+                            <option value="Plastic">Plastic</option>
+                            <option value="Clothes">Clothes</option>
+                            <option value="Metal">Metal</option>
+                            <option value="Glass">Glass</option>
+                            <option value="Paper">Paper</option>
+                            <option value="Electronics">Electronics</option>
+                        </select>
+                        <p id="categoryError" class="error"></p>
+                    </div>
+                    <div class="input-box">
+                        <label>Quantity</label>
+                        <input type="text" id="quantity" name="quantity" placeholder="Enter quantity (e.g., 5)">
+                        <p id="quantityError" class="error"></p>
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Comments (Optional)</label>
+                    <textarea placeholder="Add any comments..." id="comment" name="comment"></textarea>
+                </div>
+
+{#                <div class="form-group">#}
+{#                    <label>Rating</label>#}
+{#                    <input type="number" id="rating" name="rating" min="1" max="5">#}
+{#                    <p id="ratingError" class="error"></p>#}
+{#                </div>#}
+
+                <button type="submit" id="submitBtn" name="submitBtn">Submit</button>
+            </form>
+ {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      {% if category == 'recycle_success' %}
+        <p class="success-msg" style="color: red; font-weight: 300;">{{ message }}</p>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+        </div>
+    </section>
+
+    <div class="hero-text">
+    <h1>User Feedback & Experience</h1>
+    <h2>Share Your Thoughts & Help Us Improve ♻️✨</h2>
+</div>
+
+<section class="form-section">
+    <div class="form-content">
+        <!-- Left Image -->
+        <div class="form-image">
+            <img src="static/Priyanka_new_Image/Feedback.jpg" alt="Feedback matters">
+        </div>
+
+        <!-- Right Form -->
+        <div class="form-container">
+            <h2>Your Feedback</h2>
+            <form id="feedbackForm" action="{{ url_for('recycle') }}" method="POST">
+                <div class="form-group flex-wrp">
+                    <div class="input-box">
+                        <label>First Name <span class="red">*</span></label>
+                        <input type="text" id="firstNameFB" name="firstNameFB" value="{{ first_name }}" readonly>
+                                                <p id="firstNameErrorFB" class="error"></p>
+                    </div>
+                    <div class="input-box">
+                        <label>Last Name <span class="red">*</span></label>
+                        <input type="text" id="lastNameFB" name="lastNameFB" value="{{ last_name }}" readonly>
+                                                <p id="lastNameErrorFB" class="error"></p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Rating</label>
+                    <div class="ratingstar" id="starRating">
+                        <span onclick="setRating(1)" class="star">★</span>
+                        <span onclick="setRating(2)" class="star">★</span>
+                        <span onclick="setRating(3)" class="star">★</span>
+                        <span onclick="setRating(4)" class="star">★</span>
+                        <span onclick="setRating(5)" class="star">★</span>
+                    </div>
+                    <input type="hidden" name="rating" id="ratingValue">
+                    <p id="ratingError" class="error"></p>
+                </div>
+
+                <div class="form-group">
+                    <label>Comment</label>
+                    <textarea placeholder="Enter your feedback" id="feedback" name="comment"></textarea>
+                </div>
+
+                <button type="submit" id="Feedbtn" name="Feedbtn">SUBMIT</button>
+            </form>
+   {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      {% if category == 'feedback_success' %}
+        <p class="success-msg" style="color: red; font-weight: 300;">{{ message }}</p>
+      {% endif %}
+      {% if category == 'error' %}
+        <p style="color: red; font-weight: bold; text-align: center;">{{ message }}</p>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+        </div>
+    </div>
+</section>
+
+
+
+<section class="feedback-display">
+    <h2>User Feedback</h2>
+    <div class="feedback-container">
+    {% if feedback_list %}
+        {% for feedback in feedback_list %}
+
+            <div class="feedback-card">
+                <h3>{{ feedback.first_name_FB }} {{ feedback.last_name_FB }}</h3>
+                <p class="rating">⭐ {{ feedback.rating }}/5</p>
+                <p class="comment">"{{ feedback.comment }}"</p>
+                <p class="date">Submitted on: {{ feedback.submitted_at.strftime('%Y-%m-%d %H:%M') }}</p>
+            </div>
+
+
+
+        {% endfor %}
+    {% else %}
+        <p>No feedback submitted yet. Be the first to share your thoughts!</p>
+    {% endif %}
+</div>
+</section>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <img src="static\images/logo-square.jpg" alt="Smart Waste Management Logo">
+
+        </div>
+        <div class="footer-links">
+            <h3>Quick Link</h3>
+            <ul>
+                <li><a href="{{ url_for('disposal') }}">Disposal</a></li>
+                <li><a href="{{ url_for('recycle') }}">Recycle</a></li>
+                <li><a href="{{ url_for('marketplace') }}">Marketplace</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h3>CONTACT US</h3>
+            <p><strong>Smart Waste Management</strong></p>
+            <p>126 Queen St. E, Milton,<br>Ontario</p>
+        </div>
+        <div class="footer-social">
+            <h3>FOLLOW US</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                 <a href="#"><i class="fab fa-instagram"></i></a>
+
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div></div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>Copyright © Smart Waste Management 2025. All Rights Reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    function setRating(n) {
+        let stars = document.querySelectorAll("#starRating span");
+        document.getElementById("ratingValue").value = n;
+        stars.forEach((star, index) => {
+            star.classList.toggle("active", index < n);
+        });
+    }
+    window.setRating = setRating;
+
+    document.getElementById("recycleForm").addEventListener("submit", function(event) {
+        let errors = false;
+        document.querySelectorAll(".error").forEach(el => el.textContent = "");
+
+        let firstName = document.getElementById("firstName").value.trim();
+        let lastName = document.getElementById("lastName").value.trim();
+        let itemName = document.getElementById("item_name").value.trim();
+        let category = document.getElementById("category").value.trim();
+        let quantity = document.getElementById("quantity").value.trim();
+
+        if (!firstName) {
+            document.getElementById("firstNameError").textContent = "⚠ First Name is required!";
+            errors = true;
+        }
+
+        if (!lastName) {
+            document.getElementById("lastNameError").textContent = "⚠ Last Name is required!";
+            errors = true;
+        }
+
+        if (!itemName || itemName.length < 2) {
+            document.getElementById("itemNameError").textContent = "⚠ Item name must be at least 2 characters!";
+            errors = true;
+        }
+
+        if (!category) {
+            document.getElementById("categoryError").textContent = "⚠ Please select a category!";
+            errors = true;
+        }
+
+        if (!quantity || isNaN(quantity) || quantity <= 0) {
+            document.getElementById("quantityError").textContent = "⚠ Quantity must be a positive number!";
+            errors = true;
+        }
+
+        if (errors) {
+            event.preventDefault();
+        }
+    });
+
+    document.getElementById("feedbackForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        let errors = false;
+        document.querySelectorAll(".error").forEach(el => el.textContent = "");
+
+        let firstNameFB = document.getElementById("firstNameFB").value.trim();
+        let lastNameFB = document.getElementById("lastNameFB").value.trim();
+        let rating = document.getElementById("ratingValue").value;
+        let feedback = document.getElementById("feedback").value.trim();
+
+        if (!firstNameFB) {
+            document.getElementById("firstNameErrorFB").textContent = "⚠ First Name is required!";
+            errors = true;
+        }
+
+        if (!lastNameFB) {
+            document.getElementById("lastNameErrorFB").textContent = "⚠ Last Name is required!";
+            errors = true;
+        }
+
+        if (!rating || rating == "0") {
+            document.getElementById("ratingError").textContent = "⚠ Please select a rating!";
+            errors = true;
+        }
+
+        if (!feedback) {
+            document.getElementById("feedbackError").textContent = "⚠ Feedback cannot be empty!";
+            errors = true;
+        }
+
+        if (errors) return;
+
+        let formData = new FormData(this);
+
+        fetch(this.action, {
+            method: this.method,
+            body: formData
+        }).then(response => response.json())
+        .then((data) => {
+            if (data.status === "success") {
+                alert("Feedback submitted successfully! ✅");
+                document.getElementById("feedbackForm").reset();
+                document.querySelectorAll(".error").forEach(el => el.textContent = "");
+            } else {
+                alert("Error: " + data.message);
+            }
+        }).catch(error => console.error("Error:", error));
+    });
+});
+      function loadNotifications() {
+            fetch('/get_notifications')
+                .then(response => response.json())
+                .then(data => {
+                    const box = document.getElementById('notification-box');
+                    box.innerHTML = '';
+                    if (data.length === 0) {
+                        box.innerHTML = "<p>No new notifications</p>";
+                    } else {
+                        data.forEach(n => {
+                            const p = document.createElement('p');
+                            p.innerText = `${n.message} (${n.created_at})`;
+                            box.appendChild(p);
+                        });
+                    }
+                    box.style.display = 'block';
+                });
+        }
+
+        document.addEventListener('click', function (e) {
+            if (!document.getElementById('notification-bell').contains(e.target)) {
+                document.getElementById('notification-box').style.display = 'none';
+            }
+        });
+</script>
+
+
