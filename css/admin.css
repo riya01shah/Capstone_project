@@ -1,0 +1,376 @@
+/* RESET CSS */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+/* GENERAL BODY STYLING */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER CSS START */
+.navigation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.logo img {
+    height: 80px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+.logout-btn {
+    background-color: #B00020;   /* Dark Red for high contrast */
+    color: #FFFFFF;
+    padding: 8px 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.logout-btn:hover {
+    background-color: #7F0017;   /* Darker Red on hover */
+    color: #FFD700;              /* Bright Yellow text */
+}
+/* HEADER CSS END */
+
+/* ADMIN DASHBOARD */
+caption {
+    font-size: 18px;
+    color: #044D27;
+    padding-bottom: 15px;
+    font-weight: 700;
+}
+.admin-dashboard {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    background: #F4F7F6;
+}
+
+/* SIDEBAR MENU */
+.sidebar {
+    width: 280px;
+    background: #044D27;
+    padding: 20px;
+    color: white;
+    min-height: 100vh;
+    overflow-y: auto;
+    box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 14px;
+    border-radius: 10px;
+    background: linear-gradient(to right, #FFD700, #FFA500);
+    color: #044D27;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    letter-spacing: 1.5px;
+}
+
+/* Sidebar Buttons */
+.tab-btn {
+    width: 100%;
+    max-width: 240px;
+    padding: 12px;
+    margin: 8px auto;
+    background: #028A3D;
+    color: #FFFFFF;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.tab-btn:hover {
+    background: #02A14A;
+    color: #FFD700;
+    transform: scale(1.05);
+}
+
+/* CONTENT AREA */
+.content {
+    flex-grow: 1;
+    padding: 30px;
+    background: #F8F8F8;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* STYLISH HEADINGS */
+h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: linear-gradient(to right, #028A3D, #02A14A);
+    padding: 14px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* TABLE STYLES */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 8px;
+    background: white;
+    padding: 10px;
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+}
+
+th {
+    background: #028A3D;
+    color: #FFFFFF;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+tr:hover {
+    background: #EAF5EA;
+}
+
+/* BUTTONS */
+.delete-btn, .approve-btn, .reject-btn, .complete-btn {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Button Colors */
+.delete-btn {
+    background: #B00020;  /* Darker red for better contrast */
+    color: #FFFFFF;       /* White text */
+}
+
+.delete-btn:hover {
+    background: #7F0017;
+    color: #FFD700;
+}
+
+/* Table Header Colors */
+th {
+    background: #003320;  /* Darker green */
+    color: #FFFFFF;       /* White text */
+}
+
+/* Table Row Hover */
+tr:hover {
+    background: #D9EAD3;  /* Light green for hover */
+}
+
+.approve-btn {
+    background: #28A745;
+    color: #FFFFFF;
+}
+
+.reject-btn {
+    background: #DC3545;
+    color: #FFFFFF;
+}
+
+.complete-btn {
+    background: #007BFF;
+    color: #FFFFFF;
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+/* SELECT BOX STYLES */
+select, option {
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px solid #003320;
+}
+
+select:focus {
+    border-color: #003320;
+    outline: 3px solid #FFD700;
+}
+
+/* FOOTER */
+.admin-footer {
+    background-color: #044D27;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 15px 0;
+    border-top: 3px solid #028A3D;
+}
+
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 992px) {
+    .admin-dashboard {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    /* Navbar */
+    .navigation-header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        margin: 10px 0;
+    }
+
+    .nav-links span, .nav-links a {
+        font-size: 14px;
+    }
+
+    .logo img {
+        height: 60px;
+        width: auto;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tab-btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        margin: 5px 0;
+    }
+
+    .sidebar h2 {
+        font-size: 18px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    /* Content Area */
+    .content {
+        width: 100%;
+        padding: 15px;
+    }
+
+    /* Tables */
+    .table-container {
+        overflow-x: auto;
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+        font-size: 14px;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+
+    /* Buttons */
+    .delete-btn, .approve-btn, .complete-btn {
+        padding: 8px;
+        font-size: 14px;
+        margin-top: 5px;
+        width: 100%; /* Full width for better tap targets */
+    }
+
+    /* Footer */
+    .admin-footer {
+        padding: 10px;
+        font-size: 12px;
+        text-align: center;
+    }
+}
+
+/* Extra Small Devices (Phones) */
+@media screen and (max-width: 480px) {
+
+    .tab-btn {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    .delete-btn, .approve-btn, .complete-btn {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    .admin-footer {
+        font-size: 10px;
+    }
+
+}

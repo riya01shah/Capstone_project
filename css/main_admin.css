@@ -1,0 +1,534 @@
+
+/* ========== RESET CSS ========== */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+/* NAVIGATION HEADER */
+caption {
+    font-size: 18px;
+    color: #044D27;
+    padding-bottom: 15px;
+    font-weight: 700;
+}
+.navigation-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    width: 100%;
+    background: #086a2e; /* Ensure the background matches the header */
+}
+
+/* LOGO STYLING */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 80px; /* Adjust the height for proper visibility */
+    width: auto;
+    background: transparent; /* Ensure no extra background */
+}
+
+/* NAVIGATION LINKS */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+.logout-btn {
+    background-color: #B00020; /* Dark Red for contrast */
+    color: #FFFFFF;
+    padding: 8px 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.logout-btn:hover {
+    background-color: #7F0017; /* Darker Red on hover */
+    color: #FFD700;
+}
+
+/* ========== ADMIN DASHBOARD ========== */
+.admin-dashboard {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    background: #F4F7F6;
+}
+
+/* SIDEBAR MENU */
+.sidebar {
+    width: 280px;
+    background: #044D27;
+    padding: 20px;
+    color: white;
+    min-height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Sidebar Title */
+.sidebar h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 14px;
+    background: linear-gradient(to right, #FFD700, #FFA500);
+    color: #044D27;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Sidebar Buttons */
+.tab-btn {
+    width: 100%;
+    max-width: 240px;
+    padding: 12px;
+    margin: 8px auto;
+    background: #028A3D;
+    color: #FFFFFF;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.tab-btn:hover {
+    background: #02A14A;
+    color: #FFD700;
+}
+
+/* ========== CONTENT AREA ========== */
+.content {
+    flex-grow: 1;
+    padding: 30px;
+    background: #F8F8F8;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ========== STYLISH HEADINGS ========== */
+h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(to right, #028A3D, #02A14A);
+    padding: 14px;
+    border-radius: 8px;
+}
+
+/* ========== TABLE STYLES ========== */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 8px;
+    background: white;
+    padding: 10px;
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+}
+
+th {
+    background: #028A3D;
+    color: #FFFFFF;
+    font-size: 16px;
+}
+
+tr:hover {
+    background: #EAF5EA;
+}
+
+/* ========== BUTTON STYLES ========== */
+.delete-btn, .approve-btn, .reject-btn, .complete-btn {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.delete-btn {
+    background: #B00020;
+    color: #FFFFFF;
+}
+
+.delete-btn:hover {
+    background: #7F0017;
+    color: #FFD700;
+}
+
+/* Table Header Colors */
+th {
+    background: #003320;
+    color: #FFFFFF;
+}
+
+/* Table Row Hover */
+tr:hover {
+    background: #D9EAD3;
+}
+
+.approve-btn {
+    background: #28A745;
+    color: #FFFFFF;
+}
+
+.reject-btn {
+    background: #DC3545;
+    color: #FFFFFF;
+}
+
+.complete-btn {
+    background: #007BFF;
+    color: #FFFFFF;
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+/* SELECT BOX STYLES */
+select, option {
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px solid #003320;
+}
+
+select:focus {
+    border-color: #003320;
+    outline: 3px solid #FFD700;
+}
+
+/* ========== FOOTER ========== */
+.admin-footer {
+    background-color: #044D27;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 15px 0;
+    border-top: 3px solid #028A3D;
+}
+/* ========== RESPONSIVE DESIGN FOR ALL DEVICES ========== */
+
+/* 📌 Large Screens (Desktops & Laptops - Max 1440px) */
+@media screen and (max-width: 1440px) {
+    .navigation-header {
+        padding: 10px 15px;
+    }
+
+    .sidebar {
+        width: 250px;
+    }
+
+    .content {
+        padding: 25px;
+    }
+
+    .table-container {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+    }
+}
+
+/* 📌 Laptops & Tablets (Max 1024px) */
+@media screen and (max-width: 1024px) {
+    /* Sidebar Adjustments */
+    .sidebar {
+        width: 220px;
+        padding: 10px;
+    }
+
+    .sidebar h2 {
+        font-size: 18px;
+        padding: 8px;
+    }
+
+    .tab-btn {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    /* Adjust Content */
+    .content {
+        padding: 20px;
+    }
+
+    /* Fix Table Layout */
+    .table-container {
+        overflow-x: auto;
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+        min-width: 100%;
+        table-layout: fixed;
+    }
+
+    th, td {
+        padding: 10px;
+        white-space: nowrap;
+    }
+
+    /* Button Adjustments */
+    .delete-btn, .approve-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    /* Navigation Fix */
+    .navigation-header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .nav-links {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+    }
+
+    .logout-btn {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+}
+
+/* 📌 Tablets (Max 768px) */
+@media screen and (max-width: 768px) {
+    /* Navigation Adjustments */
+    .navigation-header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        margin: 10px 0;
+    }
+
+    .logo img {
+        height: 60px;
+        width: auto;
+    }
+
+    /* Convert Sidebar to a Horizontal Menu */
+    .admin-dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background: #044D27;
+        padding: 10px 0;
+        min-height: auto;
+        overflow-x: auto;
+    }
+
+    .sidebar h2 {
+        display: none;
+    }
+
+    .tab-btn {
+        flex-grow: 1;
+        margin: 5px;
+        padding: 10px 15px;
+        font-size: 14px;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    /* Content Adjustments */
+    .content {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .tab-content {
+        display: none;
+        width: 100%;
+        padding: 10px;
+        background: white;
+        border-radius: 5px;
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .tab-content.active {
+        display: block !important;
+    }
+
+    /* Fix Table Layout */
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+        display: block;
+    }
+
+    table {
+        width: 100%;
+        min-width: 100%;
+        table-layout: auto;
+    }
+
+    th, td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    /* Button Adjustments */
+    .delete-btn, .approve-btn {
+        padding: 8px;
+        font-size: 14px;
+        margin-top: 5px;
+        width: 100%;
+    }
+
+    /* Logout Button */
+    .logout-btn {
+        width: 100%;
+        text-align: center;
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    /* Footer */
+    .admin-footer {
+        padding: 10px;
+        font-size: 12px;
+        text-align: center;
+    }
+}
+
+/* 📌 Mobile Devices (Max 480px) */
+@media screen and (max-width: 480px) {
+    /* Sidebar Adjustments */
+    .sidebar {
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    .tab-btn {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    /* Fix Table Layout */
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        min-width: 100%;
+        table-layout: auto;
+    }
+
+    th, td {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    /* Footer */
+    .admin-footer {
+        font-size: 10px;
+        padding: 8px;
+    }
+}
+
+/* 📌 Universal Table Fix for Proper Length */
+.table-container {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 100%;
+    table-layout: auto;
+}
+
+/* 📌 Universal Button Fix */
+td.actions {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.delete-btn, .approve-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+}
+
+.delete-btn {
+    background: #B00020;
+    color: #FFFFFF;
+}
+
+.delete-btn:hover {
+    background: #7F0017;
+    color: #FFD700;
+}
+
+.approve-btn {
+    background: #28A745;
+    color: #FFFFFF;
+}
+
+.approve-btn:hover {
+    background: #218838;
+}

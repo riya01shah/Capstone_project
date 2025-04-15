@@ -1,0 +1,253 @@
+/* marketplace.css */
+
+/* Marketplace Header */
+.marketplace-header {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.marketplace-header h1 {
+    font-size: 3rem;
+    color: #27ae60; /* Green for the brand */
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.offer-management {
+    margin-top: 20px;
+    background-color: #086a2d;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.offer-management h4 {
+    color: white;
+    margin-bottom: 10px;
+}
+em {
+color: white;
+}
+.single-offer-box {
+    background-color: #fff;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.single-offer-box p {
+    margin: 5px 0;
+}
+
+.single-offer-box button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.single-offer-box button[type="submit"]:last-child {
+    background-color: #dc3545;
+}
+
+
+
+.marketplace-header p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Marketplace Content Area */
+.marketplace-content {
+    margin: 40px 5%;
+}
+
+.waste-listings {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Listing Card Style */
+.listing-card {
+    border: 2px solid #e1e1e1;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    /* text-align: center; */
+    position: relative;
+    display: flex
+;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    min-height: max-content;
+}
+
+/* Hover effect for listing card */
+.listing-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Listing Card Header */
+.listing-card h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #0a662f;
+}
+
+/* Listing Card Details */
+.listing-card p {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Contact Button Style */
+.contact-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 100%;
+}
+.offer-form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.offer-form .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+.offer-form .form-group label {
+margin-bottom: 5px;
+}
+.offer-form .form-textarea {
+    width: 100%;
+    min-height: 60px;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: vertical;
+}
+
+.offer-form .form-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.offer-form .submit-btn {
+    padding: 10px 16px;
+    font-size: 16px;
+    background-color: #0070ba;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.submit-btn:hover {
+    background-color: #005c99;
+}
+
+/* Contact Button Hover Effect */
+.contact-btn:hover {
+    background-color: #218838;
+}
+
+
+.sold-watermark {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-25deg);
+    font-size: 3em;
+    color: rgba(255, 0, 0, 0.6);
+    font-weight: bold;
+    z-index: 10;
+    pointer-events: none;
+    border: 5px dashed;
+}
+.listing-card {
+    position: relative;
+}
+
+
+
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .marketplace-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .marketplace-header p {
+        font-size: 1rem;
+    }
+
+    .waste-listings {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .listing-card {
+        min-height: 250px;
+    }
+
+    .contact-btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+
+}
+strong {
+color: #096A2E;
+}
+@media (max-width: 480px) {
+    .marketplace-header h1 {
+        font-size: 2rem;
+    }
+
+    .marketplace-header p {
+        font-size: 0.9rem;
+    }
+
+    .waste-listings {
+        grid-template-columns: 1fr;
+    }
+
+
+}

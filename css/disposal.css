@@ -1,0 +1,510 @@
+.success-msg {
+     color: red;
+    font-weight: 300;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.hero-disposal {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-disposal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.disposal-text h3 {
+    font-size: 20px;
+    color: #096A2E;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.content {
+    padding: 20px;
+    margin-top: 30px;
+    position: relative;
+    z-index: 1;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-section {
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form label {
+    margin: 10px 0 0px;
+    text-align: left;
+    width: 80%;
+    font-weight: bold;
+    color: green;
+}
+
+form input {
+    padding: 8px;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #008000;
+    color: white;
+    padding: 10px;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 85%;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #006600;
+}
+
+.info {
+    width: 90%;
+    height:auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+}
+.hero-text p {
+    text-align: left;
+    font-size: 21px;
+    padding: 0 100px;
+    line-height: 1.6;
+}
+
+/* Container Styling */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+}
+
+
+/* Go Green Section */
+/* Go Green Section */
+.go-green {
+    background-color: white;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.green-images {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    max-width: 1400px;
+    margin: auto;
+    
+}
+
+.green-item {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.green-item img {
+    width: 150%;
+    max-width: 500px;
+    height: 150%;
+    border-radius: 5px;
+}
+
+
+
+
+h2 {
+    color: green;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.effects {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 80%;
+}
+
+.hero-text.disposal-text h1 {
+    color: #0a662f;
+    text-align: center;
+    margin: 5px;
+    line-height: 1.4;
+    font-size: 32px;
+}
+.hero-text h2 {
+    color: #0a662f;
+    text-align: center;
+    margin: 20px auto 30px;
+    line-height: 1.4;
+    font-size: 28px;
+}
+.hero-text.disposal-text h2 {
+    color: #0a662f;
+    text-align: center;
+    margin: 20px auto 15px;
+    line-height: 1.4;
+    font-size: 28px;
+}
+.pointers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: nowrap;
+    background: #fff;
+    padding-bottom: 20px;
+}
+
+.pointers img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+
+
+.pointers h3 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #185a25;
+    margin-bottom: 10px;
+    
+}
+
+.pointers p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    text-align: left;
+    max-width: 600px;
+}
+.merits-img {
+    width: 300px;
+    height: 350px;
+}
+.left-wrp {
+    
+    text-align: left;
+    padding-right: 20px;
+    border-right: 3px solid #096A2E;
+}
+.right-wrp {
+    text-align: left;
+    padding-left: 20px;
+    border-left: 3px solid #096A2E;
+}
+
+/* Responsive for Tablets */
+ @media screen and (min-width: 768px) and (max-width: 1024px){
+    .pointers {
+        flex-direction: row;
+        text-align: center;
+    }
+    .pointers div {
+    
+        min-width: 200px;
+    }
+    .mt-20 {
+        margin-top: 20px;
+    padding-left: 20px;
+    }
+    .pointers div p {
+        font-size: 14px;
+    }
+    .merits-img {
+        width: 200px;
+        
+    }
+    .pointers {
+        display: flex;
+    
+        /* align-items: center; */
+        /* justify-content: center; */
+        gap: 10px;
+        flex-wrap: nowrap;
+        
+        /* padding: 30px; */
+    }
+    
+    .left-wrp {
+    
+        text-align: left;
+        /* padding-right: 20px; */
+        border-right: none;
+    }
+    .right-wrp {
+    
+        text-align: left;
+        /* padding-right: 20px; */
+        border-left: none;
+    }
+}
+
+/* Responsive for Mobile Devices */
+@media screen and (max-width: 768px) {
+    .pointers img {
+        width: 200px;
+    }
+    .disposal-text h3 {
+        font-size: 16px;}
+    .pointers p {
+        max-width: 100%;
+    }
+    .pointers {
+       
+       display: block;
+      
+    }
+    .left-wrp, .right-wrp {
+    
+        text-align: center !important;
+        padding-right: 0;
+        border-right: none;
+        border-left: none;
+    }
+    .mobile {
+        text-align: left;
+    }
+}
+
+/* Form Section - Ensure Full Width and Equal Layout */
+
+
+
+   
+
+
+/* Full-width form section */
+/* Form Section - Full Width & Centered */
+/* Full-width form section */
+.form-section {
+    width: 100vw; /* Full screen width */
+    max-width: 100%;
+    display: flex;
+    align-items: stretch; /* Ensure both form and image are the same height */
+    justify-content: center; /* Centers the form & image */
+    padding: 40px 5%;
+    background: #f4f4f4;
+}
+
+/* Ensure Form Content is full-width and aligned properly */
+.form-content {
+    display: flex;
+    width: 100%;
+    max-width: 1400px; /* Controls max width */
+    align-items: stretch;
+    justify-content: space-between; /* Space between form and image */
+    gap: 30px; /* Keeps gap between them */
+}
+
+/* Left Image */
+.form-image {
+    width: 50%; /* Image takes half of the space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-image img {
+    width: 100%;
+    height: 100%;
+    max-width: 800px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.message {
+    margin-top: 15px;
+    color: red;
+    font-size: 14px;
+    text-align: center;
+}
+.message li {
+    list-style-type: none;
+}
+/* Right Form */
+.form-container {
+    width: 50%; /* Form takes half of the space */
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Form Heading */
+.form-container h2 {
+    text-align: left;
+    margin-bottom: 20px;
+    color: green;
+    font-size: 24px;
+}
+
+/* Form Elements */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+/* Two-column layout for first & last name */
+.name-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+.input-box {
+    width: 48%;
+}
+
+/* Input & Select Fields */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    margin-top: 7px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Ensure Contact section is aligned */
+.contact-group {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.contact-group select {
+    width: 48%;
+}
+
+/* Submit Button */
+button {
+    width: 100%;
+    padding: 14px;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: darkgreen;
+}
+
+  .red {
+  color: #d60000;  /* darker red that meets 4.5:1 contrast */
+  font-weight: bold;
+  position: relative;
+  left: 1px;
+  top: 3px;
+}
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+.flex-wrp {
+    flex-direction: row;
+    justify-content: space-between;
+}
+/* Responsive Fixes */
+@media (max-width: 900px) {
+    .form-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .form-content {
+        flex-direction: column;
+        width: 100%;
+        max-width: 90%;
+    }
+
+    .form-image,
+    .form-container {
+        width: 100%;
+    }
+
+    .form-image img {
+        height: auto;
+    }
+
+    .name-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .input-box {
+        width: 80%;
+        text-align: left;
+        margin-right: 20px;
+    }
+
+
+}
+
+@media (max-width: 768px) {
+    .flex-wrp {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .input-box:first-child {
+        padding-bottom: 15px;
+    }
+    .input-box {
+        width: 100%;
+        text-align: left;
+       
+    }
+
+}
